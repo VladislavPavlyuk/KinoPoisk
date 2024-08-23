@@ -8,6 +8,11 @@ public class HomeController : Controller
     {
         return View();
     }
+    public IActionResult Privacy()
+    {
+        return View("Privacy");
+    }
+
 
     [HttpGet]
     public IActionResult GetMovieInfo(string movieName)
