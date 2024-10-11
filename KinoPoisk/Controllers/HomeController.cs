@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿#pragma warning disable SYSLIB0014
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net;
 
@@ -22,7 +23,7 @@ public class HomeController : Controller
         using (WebClient client = new())
         {
             string json = client.DownloadString(url);
-            dynamic result = JsonConvert.DeserializeObject(json);
+            dynamic? result = JsonConvert.DeserializeObject(json);
             if (result != null)
             {
                 if (result.Response == "True")
@@ -57,7 +58,7 @@ public class HomeController : Controller
             }
             else
             {
-                return Content("Фильм не найден.");
+                return Content("Упс... Что-то пошло не так...");
             }
         }
     }
